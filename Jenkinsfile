@@ -4,11 +4,13 @@ pipeline {
     stages {
 	stage('Test Code') {
 	    steps {
+		script{
                 if (fileExists('/home/ubuntu/ming_docker/index.html')) {
                    echo 'File Exists'
                 } else {
                    echo 'File Not Exists'
                    error('File not exists')
+                }
                 }
 	    }
         }
