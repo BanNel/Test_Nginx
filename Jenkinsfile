@@ -5,7 +5,7 @@ pipeline {
 	stage('Test Code') {
 	    steps {
 		script{
-                if (fileExists('/home/ubuntu/ming_docker/index.html')) {
+                if (fileExists('/home/ubuntu/ming_docker/index.html')== true) {
                    echo 'File Exists'
                 } else {
                    echo 'File Not Exists'
