@@ -11,8 +11,7 @@ pipeline {
             steps {
                 echo 'Testing..'
 		final String url = "http:localhost:8080"
-
-                final String response = sh(script: "curl -s $url", returnStdout: true).trim()
+		final String response = sh(script: "curl -s $url", returnStdout: true).trim()
 
                 echo response
             }
