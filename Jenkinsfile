@@ -7,6 +7,7 @@ pipeline {
 	    steps {
         	   echo "file not exists"
                    error("Test failed: file not exists")
+                   sh "exit 1"
 	          }
 	    }
 
