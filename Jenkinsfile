@@ -3,9 +3,10 @@ pipeline {
 
     stages {
 	stage('Test Code') {
-	    when { expression { return fileExists ('/home/ubuntu/ming_docker/index.html') } }
+	    when { not{ expression { return fileExists ('/home/ubuntu/ming_docker/index.html') } } }
 	    steps {
-        	   echo "file exists"
+        	   echo "file not exists"
+                   error("Test failed: file not exists")
 	          }
 	    }
 
