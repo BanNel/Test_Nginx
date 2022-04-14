@@ -9,7 +9,7 @@ pipeline {
                        echo 'File Exists'
                     } else {
                        echo 'File Not Exists'
-                       error('File not exists')
+                      # error('File not exists')
                     }
                 }
 	    }
