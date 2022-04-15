@@ -36,9 +36,22 @@ pipeline {
             }
         }
         stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+		steps{
+	            sshagent(credentials : ['Barry_ec2_Key']) {
+	            sh """ssh -tt ubuntu@3.141.45.246 << EOF 
+                    git --version
+                    sudo docker ps
+                    sudo docker system prune -f
+                    cd /home/ubuntu/ming_docker
+                    sudo docker build -t ihaveanicecream/nginx-custom-index .
+                    sudo docker push ihaveanicecream/nginx-custom-index
+                    aws ecs update-service --cluster  Barry-Nginx --service Nginx --force-new-deployment
+                    
+                    exit
+                    EOF"""
+          
             }
+        }
         }
     }
 }
